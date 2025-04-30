@@ -1,6 +1,6 @@
 SKYJO/YARDCARD
 
-3-5 fichiers 
+ fichiers :
 
 1. main.c
 
