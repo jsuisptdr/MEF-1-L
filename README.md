@@ -1,16 +1,30 @@
-# MEF-1-L
-
 #include <stdio.h>
 
-int main(){
+#define LIGNES 3
+#define COLONNES 4
+#define NB_JOUEURS 
+#define NB_CARTES 150
 
-int nb_joueurs;
-     printf("Bienvenue dans CardYard !\n");
-     printf("Entrez le nombre de joueurs (2-8): ");
-     scanf("%d", &nb_joueurs);
+typedef struct {
+    int valeur;     
+    int visible;   
+} Carte;
 
-return 0;
-}
+typedef struct {
+    Carte grille[LIGNES][COLONNES];  
+    int score_total;                 
+} Joueur;
+
+typedef struct {
+    Carte cartes[NB_CARTES];
+    int sommet; 
+} Pioche;
+
+
+typedef struct {
+    Carte cartes[NB_CARTES];
+    int sommet;
+} Defausse;
      
      
 
