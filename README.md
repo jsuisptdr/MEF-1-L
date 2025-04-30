@@ -25,6 +25,15 @@ typedef struct {
     Carte cartes[NB_CARTES];
     int sommet;
 } Defausse;
+
+// TENZIN : INITIALISATION DU JEU 
+
+// GREG : BOUCLES 
+
+// FIN DE JEU
+
+
+
      
      
 
