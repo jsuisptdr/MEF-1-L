@@ -8,7 +8,7 @@ SKYJO/YARDCARD
 
 3. pioche.c + pioche.h
 
-4. player.c + player.Hhh
+4. player.c + player.H
  
 5. save.c + save.h
 
