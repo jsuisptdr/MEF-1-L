@@ -1,8 +1,3 @@
-/**
- * @file display.c
- * @brief Implémentation des fonctions d'affichage du jeu
- */
-
  #include <stdio.h>
  #include <stdlib.h>
  #include <string.h>
