@@ -8,7 +8,6 @@
  
  void initializeDefaultCardDeck(int cards[], int *size);
  
-
  bool initializeCardDeckFromFile(int cards[], int *size, const char *filename);
  
  bool initializeCardDeckFromUserInput(int cards[], int *size);
@@ -21,4 +20,4 @@
  
  int initializeCardsPerPlayer(GameState *game);
  
- #endif // CARD_H
+ #endif
