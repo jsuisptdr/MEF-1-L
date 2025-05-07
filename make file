@@ -1,0 +1,57 @@
+# Makefile pour le projet Card Yard
+
+# Compilateur et options
+CC = gcc
+CFLAGS = -Wall -Wextra -g
+LDFLAGS = 
+
+# Dossiers
+SAVE_DIR = saves
+fichier_o = fichier_o
+
+# Fichiers source et objets
+SRCS = display.c utils.c save.c card.c player.c game.c main.c
+OBJS = $(patsubst %.c,$(fichier_o)/%.o,$(SRCS))
+TARGET = card_yard
+
+# Règle par défaut
+all: directories $(TARGET)
+
+# Créer les répertoires nécessaires
+directories:
+	mkdir -p $(SAVE_DIR)
+	mkdir -p $(fichier_o)
+
+# Lier le programme
+$(TARGET): $(OBJS)
+	$(CC) $(CFLAGS) -o $@ $^ $(LDFLAGS)
+
+# Règle générique pour compiler les fichiers source
+$(fichier_o)/%.o: %.c
+	$(CC) $(CFLAGS) -c $< -o $@
+
+# Dépendances entre fichiers
+$(fichier_o)/display.o: display.c display.h 
+$(fichier_o)/utils.o: utils.c utils.h display.h
+$(fichier_o)/save.o: save.c save.h game.h display.h utils.h
+$(fichier_o)/card.o: card.c card.h game.h utils.h
+$(fichier_o)/player.o: player.c player.h game.h card.h display.h utils.h
+$(fichier_o)/game.o: game.c game.h card.h player.h display.h utils.h save.h
+$(fichier_o)/main.o: main.c game.h display.h player.h card.h utils.h save.h
+
+# Nettoyer le projet
+clean:
+	rm -f $(OBJS) $(TARGET)
+	rm -rf $(fichier_o)
+
+# Nettoyer le projet et les sauvegardes
+cleanall: clean
+	rm -rf $(SAVE_DIR)
+	rm -rf $(fichier_o)
+
+# Exécuter le programme
+run: all
+	./$(TARGET)
+
+# Pour éviter les conflits avec des fichiers du même nom
+.PHONY: all clean cleanall run directories
