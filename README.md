@@ -115,13 +115,8 @@ Exemple:
 6. Le joueur qui retourne toutes ses cartes en premier déclenche le dernier tour
 7. À la fin, les scores sont calculés et le gagnant est annoncé
 
-## Conseils stratégiques
 
-- Observez les défausses des autres joueurs pour anticiper leurs mouvements
-- Les cartes à valeur négative sont particulièrement intéressantes à garder
-- Parfois, il peut être stratégique de ne pas retourner toutes vos cartes immédiatement
-
-## Auteur
+## Auteurs
 
 MEF1-L
 TENZIN
