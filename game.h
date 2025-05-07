@@ -3,15 +3,11 @@
  
  #include <stdbool.h>
  
- typedef enum {
-     VALUE_DEFAULT,    
-     VALUE_FILE,       
-     VALUE_USER        
+ typedef enum {    
+     VALUE_FILE               
  } CardValueMode;
  
  typedef enum {
-     CARD_DEFAULT,    
-     CARD_USER,        
      CARD_RAND         
  } CardNumberMode;
  
