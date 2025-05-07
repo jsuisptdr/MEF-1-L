@@ -1,8 +1,3 @@
-/**
- * @file player.c
- * @brief Implémentation des fonctions liées aux joueurs
- */
-
  #include <stdio.h>
  #include <stdlib.h>
  #include <string.h>
