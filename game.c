@@ -1,8 +1,3 @@
-/**
- * @file game.c
- * @brief Implémentation des fonctions principales du jeu Card Yard
- */
-
  #include <stdio.h>
  #include <stdlib.h>
  #include <string.h>
