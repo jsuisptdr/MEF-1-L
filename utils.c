@@ -1,8 +1,3 @@
-/**
- * @file utils.c
- * @brief Implémentation des fonctions utilitaires
- */
-
  #include <stdio.h>
  #include <stdlib.h>
  #include <string.h>
