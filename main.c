@@ -30,11 +30,15 @@ while (!quit) {
     
     switch (choice) {
         case 1: // Nouvelle partie
-            if (displayGameSetupMenu(&game)) {
+            displayGameSetupMenu(&game);
+            initializeGame(&game, game.numPlayers, game.valueMode, game.cardNumberMode);
+            // printf("Nom joueur 1 : %s \n", game.playerNames[0]);
+            startGame(&game);
+            /*if (displayGameSetupMenu(&game)) {
                 if (initializeGame(&game, game.numPlayers, game.valueMode, game.cardNumberMode)) { // se situe dans game.h
                     startGame(&game);
                 }
-            }
+            }*/
             break;
             
         case 2: // Charger une partie
