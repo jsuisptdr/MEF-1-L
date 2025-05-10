@@ -1,57 +1,26 @@
-# Makefile pour le projet Card Yard
+all: exec
+main.o: main.c game.h display.h player.h card.h utils.h save.h
+    gcc -c main.c -o main.o
+card.o: card.c card.h game.h display.h utils.h
+    gcc -c card.c -o card.o
+display.o: display.c display.h game.h
+    gcc -c display.c -o diplay.o
+game.o: game.c game.h card.h player.h display.h utils.h save.h
+    gcc -c game.c -o game.o
+player.o: player.c player.h game.h card.h display.h utils.h
+    gcc -c player.c -o player.o
+save.o: save.c save.h game.h display.h utils.h
+    gcc -c save.c -o save.o
+utils.o: utils.c utils.h display.h
+    gcc -c utils.c -o utils.o
 
-# Compilateur et options
-CC = gcc
-CFLAGS = -Wall -Wextra -g
-LDFLAGS = 
+exec: main.o card.o display.o game.o player.o save.o utils.o
+    gcc main.o card.o display.o game.o player.o save.o utils.o -o exec 
 
-# Dossiers
-SAVE_DIR = saves
-fichier_o = fichier_o
-
-# Fichiers source et objets
-SRCS = display.c utils.c save.c card.c player.c game.c main.c
-OBJS = $(patsubst %.c,$(fichier_o)/%.o,$(SRCS))
-TARGET = card_yard
-
-# Règle par défaut
-all: directories $(TARGET)
-
-# Créer les répertoires nécessaires
-directories:
-	mkdir -p $(SAVE_DIR)
-	mkdir -p $(fichier_o)
-
-# Lier le programme
-$(TARGET): $(OBJS)
-	$(CC) $(CFLAGS) -o $@ $^ $(LDFLAGS)
-
-# Règle générique pour compiler les fichiers source
-$(fichier_o)/%.o: %.c
-	$(CC) $(CFLAGS) -c $< -o $@
-
-# Dépendances entre fichiers
-$(fichier_o)/display.o: display.c display.h 
-$(fichier_o)/utils.o: utils.c utils.h display.h
-$(fichier_o)/save.o: save.c save.h game.h display.h utils.h
-$(fichier_o)/card.o: card.c card.h game.h utils.h
-$(fichier_o)/player.o: player.c player.h game.h card.h display.h utils.h
-$(fichier_o)/game.o: game.c game.h card.h player.h display.h utils.h save.h
-$(fichier_o)/main.o: main.c game.h display.h player.h card.h utils.h save.h
-
-# Nettoyer le projet
 clean:
-	rm -f $(OBJS) $(TARGET)
-	rm -rf $(fichier_o)
+    rm main.o card.o display.o game.o player.o save.o utils.o
+    rm exec
 
-# Nettoyer le projet et les sauvegardes
-cleanall: clean
-	rm -rf $(SAVE_DIR)
-	rm -rf $(fichier_o)
-
-# Exécuter le programme
-run: all
-	./$(TARGET)
-
-# Pour éviter les conflits avec des fichiers du même nom
-.PHONY: all clean cleanall run directories
+cleanfile:
+    rm -f $(FILE)
+	touch $(FILE)
