@@ -251,7 +251,7 @@ void afficher_info(const char *message) {
 }
 
 void nettoyer_ecran() {
-    system("clear || cls"); // Clear screen for Unix/Linux or Windows
+    //system("clear || cls"); // Clear screen for Unix/Linux or Windows
 }
 
 void afficher_tour_joueur(GameState *game) {
