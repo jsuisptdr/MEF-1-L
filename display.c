@@ -1,3 +1,8 @@
+/**
+ * @file display.c
+ * @brief Implémentation des fonctions d'affichage du jeu
+ */
+
  #include <stdio.h>
  #include <stdlib.h>
  #include <string.h>
@@ -152,7 +157,6 @@
      } else {
          printf("        %s│   %d  │%s\n", couleur, currentCard, RESET);
      }
-     
      printf("        %s│ YARD │%s\n", couleur, RESET);
      printf("        %s└──────┘%s\n", couleur, RESET);
      printf("         PIOCHE\n\n");
@@ -250,7 +254,7 @@ void nettoyer_ecran() {
     system("clear || cls"); // Clear screen for Unix/Linux or Windows
 }
 
-afficher_tour_joueur(GameState *game) {
+void afficher_tour_joueur(GameState *game) {
     printf("C'est le tour de %s!\n", game->playerNames[game->currentPlayerIndex]);
     printf("Sélectionnez une action:\n");
     printf("1. Piocher une carte de la pioche centrale\n");
@@ -268,6 +272,9 @@ void afficher_resultats(GameState *game, int sortedIndices[], int scores[]) {
     for (int i = 0; i < game->numPlayers; i++) {
         printf("%s: %d points\n", game->playerNames[sortedIndices[i]], scores[sortedIndices[i]]);
     }
+    
+    printf("\nLe gagnant est %s avec %d points!\n", game->playerNames[sortedIndices[0]], scores[sortedIndices[0]]);
+}
     
     printf("\nLe gagnant est %s avec %d points!\n", game->playerNames[sortedIndices[0]], scores[sortedIndices[0]]);
 }
