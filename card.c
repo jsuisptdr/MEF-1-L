@@ -1,3 +1,8 @@
+/**
+ * @file card.c
+ * @brief Implémentation des fonctions liées aux cartes
+ */
+
  #include <stdio.h>
  #include <stdlib.h>
  #include <string.h>
