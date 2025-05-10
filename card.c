@@ -30,8 +30,8 @@
      }
  }
  
- bool initializeCardDeckFromFile(int cards[], int *size) {
-     FILE *file = fopen(value.txt, "r");
+ bool initializeCardDeckFromFile(int cards[], int *size, const char *filename) {
+     FILE *file = fopen(filename, "r");
      if (file == NULL) {
          return false;
      }
