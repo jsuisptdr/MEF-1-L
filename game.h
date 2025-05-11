@@ -29,7 +29,7 @@ typedef struct {
     int currentPlayerIndex;                           // Index du joueur actuel
     int playerCards[MAX_PLAYERS][MAX_CARDS_PER_PLAYER]; // Cartes de chaque joueur
     int personalDiscards[MAX_PLAYERS];                // Défausses personnelles
-    int centralDeck[52];                              // Pioche centrale
+    int centralDeck[100];                              // Pioche centrale
     int centralDeckSize;                              // Taille actuelle de la pioche centrale
     int currentCentralCard;                           // Carte actuelle de la pioche centrale
     int cardsPerPlayer;                               // Nombre de cartes par joueur

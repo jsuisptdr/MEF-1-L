@@ -61,14 +61,9 @@ Card Yard est un jeu de cartes stratégique où l'objectif est d'obtenir le scor
 make
 ```
 
-#### Sans Make
-```bash
-gcc -o card_yard main.c game.c card.c player.c display.c utils.c save.c -std=c99
-```
-
 ## Exécution
 ```bash
-./card_yard
+./CardYard
 ```
 
 ## Structure du projet
@@ -80,6 +75,7 @@ gcc -o card_yard main.c game.c card.c player.c display.c utils.c save.c -std=c99
 - `display.c/h` - Affichage et interface utilisateur
 - `utils.c/h` - Fonctions utilitaires
 - `save.c/h` - Fonctions de sauvegarde et chargement
+- `makefile` - Compilation séparée des fichiers
 
 ## Configuration des cartes
 
@@ -116,12 +112,13 @@ Exemple:
 7. À la fin, les scores sont calculés et le gagnant est annoncé
 
 
+
 ## Auteurs
 
-MEF1-L
-TENZIN
-AYA
-GREGOIRE
+- **Tenzin**
+- **Aya**
+- **Grégoire**
+
      
      
 

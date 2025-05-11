@@ -26,7 +26,7 @@ game->valueMode = valueMode;
 game->cardNumberMode = cardNumberMode;
 
 // Initialiser le nombre de cartes par joueur
-game->cardsPerPlayer = initializeCardsPerPlayer(game);
+game->cardsPerPlayer = initializeCardsPerPlayer(game); // se situe dans card.c
 
 // Initialiser les joueurs (noms)
 if (!initializePlayers(game)) {
@@ -61,7 +61,7 @@ case VALUE_USER:
 
 // Mélanger le jeu de cartes
 shuffleDeck(game->centralDeck, game->centralDeckSize);
-
+printf("Jeu de cartes mélangé avec succès!\n");
 // Initialiser les cartes des joueurs (toutes face cachées)
 for (int i = 0; i < game->numPlayers; i++) {
 for (int j = 0; j < game->cardsPerPlayer; j++) {
@@ -70,7 +70,7 @@ for (int j = 0; j < game->cardsPerPlayer; j++) {
 game->visibleCards[i] = 0;
 game->personalDiscards[i] = EMPTY_CARD;
 }
-
+printf("Cartes des joueurs initialisées avec succès!\n");
 // Initialiser la carte actuelle de la pioche centrale
 game->currentCentralCard = EMPTY_CARD;
 
@@ -264,7 +264,7 @@ afficher_resultats(game, sortedIndices, scores);
 }
 
 int displayMainMenu() {
-nettoyer_ecran();
+//nettoyer_ecran();
 printf("╔═════════════════════════════════╗\n");
 printf("║           CARD YARD             ║\n");
 printf("╠═════════════════════════════════╣\n");
