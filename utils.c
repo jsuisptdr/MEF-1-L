@@ -17,7 +17,7 @@ int readInt(int min, int max, const char *promptMessage, const char *errorMessag
         
         // Lire l'entrée comme une chaîne
         if (fgets(buffer, sizeof(buffer), stdin) == NULL) {
-            afficher_erreur("Erreur de lecture");
+            display_error("Erreur de lecture");
             continue;
         }
         
@@ -29,12 +29,12 @@ int readInt(int min, int max, const char *promptMessage, const char *errorMessag
         
         // Vérifier si la conversion a réussi et si la valeur est dans la plage
         if (*endptr != '\0') {
-            afficher_erreur(errorMessage);
+            display_error(errorMessage);
             continue;
         }
         
         if (value < min || value > max) {
-            afficher_erreur(errorMessage);
+            display_error(errorMessage);
             continue;
         }
         
@@ -49,7 +49,7 @@ char* readString(char *buffer, int size, const char *promptMessage) {
     
     // Lire l'entrée comme une chaîne
     if (fgets(buffer, size, stdin) == NULL) {
-        afficher_erreur("Erreur de lecture");
+        display_error("Erreur de lecture");
         buffer[0] = '\0';
         return buffer;
     }
