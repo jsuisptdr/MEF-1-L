@@ -22,7 +22,7 @@ GameState game;
 bool quit = false;
 
 // Afficher le message de bienvenue
-afficher_bienvenue();
+display_welcome_message();
 
 // Boucle principale du programme
 while (!quit) {
@@ -42,10 +42,10 @@ while (!quit) {
             char* filename = listSavedGames();
             if (filename != NULL) {
                 if (loadGame(&game, filename)) {
-                    afficher_info("Partie chargée avec succès!");
+                    display_message("Partie chargée avec succès!");
                     startGame(&game);
                 } else {
-                    afficher_erreur("Impossible de charger la partie.");
+                    display_error("Impossible de charger la partie.");
                 }
                 free(filename);
             }
@@ -53,7 +53,7 @@ while (!quit) {
         break;
             
         case 3: // Afficher les instructions
-            afficher_instructions();
+            display_instructions();
             pauseWithMessage("Appuyez sur Entrée pour continuer...");
             break;
             
@@ -62,7 +62,7 @@ while (!quit) {
             break;
             
         default:
-            afficher_erreur("Option non valide.");
+            display_error("Option non valide.");
             break;
     }
 }
