@@ -12,7 +12,7 @@
 
 bool initializeGame(GameState *game, int numPlayers, CardValueMode valueMode, CardNumberMode cardNumberMode) {
 if (numPlayers < MIN_PLAYERS || numPlayers > MAX_PLAYERS) {
-afficher_erreur("Nombre de joueurs invalide.");
+display_error("Nombre de joueurs invalide.");
 return false;
 }
 
@@ -40,20 +40,20 @@ case VALUE_DEFAULT:
     break;
 case VALUE_FILE:
     // proposer de changer les valeurs a l'interieur du fichier
-    if (proposer_de_changer_les_valeurs()) {
+    if (suggest_value_swap()) {
         if (!changeCardValuesToFile("saves/VALUE_CARD.txt")) {
-            afficher_erreur("Impossible de changer les valeurs des cartes dans le fichier.");
+            display_error("Impossible de changer les valeurs des cartes dans le fichier.");
             return false;
         }
     }
     if (!initializeCardDeckFromFile(game->centralDeck, &game->centralDeckSize, "VALUE_CARD.txt")) {
-        afficher_erreur("Impossible de charger les valeurs des cartes depuis le fichier.");
+        display_error("Impossible de charger les valeurs des cartes depuis le fichier.");
         return false;
     }
     break;
 case VALUE_USER:
     if (!initializeCardDeckFromUserInput(game->centralDeck, &game->centralDeckSize)) {
-        afficher_erreur("Échec de la configuration des valeurs des cartes.");
+        display_error("Échec de la configuration des valeurs des cartes.");
         return false;
     }
     break;
@@ -81,7 +81,7 @@ dealCards(game);
 // Piocher la première carte pour la pioche centrale
 game->currentCentralCard = drawFromCentralDeck(game);
 if (game->currentCentralCard == EMPTY_CARD) {
-afficher_erreur("Échec de la pioche de la carte centrale.");
+display_error("Échec de la pioche de la carte centrale.");
 return false;
 }
 
@@ -94,11 +94,11 @@ bool startGame(GameState *game) {
 // Boucle principale du jeu
 while (!game->gameOver) {
 // Afficher l'état du jeu
-nettoyer_ecran();
-afficher_jeu(game);
+clear_screen();
+display_game(game);
 
 // Afficher le tour du joueur actuel
-afficher_tour_joueur(game);
+display_player_turn(game);
 
 // Menu pour sauvegarder ou jouer
 printf("\n1. Jouer\n");
@@ -111,10 +111,10 @@ if (choice == 2) {
     char filename[100];
     readString(filename, sizeof(filename), "Entrez le nom du fichier de sauvegarde: ");
     if (saveGame(game, filename)) {
-        afficher_info("Partie sauvegardée avec succès!");
+        display_message("Partie sauvegardée avec succès!");
         return true;
     } else {
-        afficher_erreur("Erreur lors de la sauvegarde.");
+        display_error("Erreur lors de la sauvegarde.");
         pauseWithMessage("Appuyez sur Entrée pour continuer...");
         continue;
     }
@@ -122,7 +122,7 @@ if (choice == 2) {
 
 // Jouer le tour du joueur actuel
 if (!playTurn(game)) {
-    afficher_erreur("Erreur lors du tour du joueur.");
+    display_error("Erreur lors du tour du joueur.");
     pauseWithMessage("Appuyez sur Entrée pour continuer...");
     continue;
 }
@@ -140,7 +140,7 @@ calculateScores(game, scores);
 sortPlayersByScore(game, sortedIndices, scores);
 
 printf("\n\n");
-afficher_resultats(game, sortedIndices, scores);
+display_game_results(game, sortedIndices, scores);
 
 pauseWithMessage("Appuyez sur Entrée pour revenir au menu principal...");
 return true;
@@ -161,7 +161,7 @@ return playerTurn(game);
 
 int drawFromCentralDeck(GameState *game) {
 if (game->centralDeckSize <= 0) {
-afficher_erreur("La pioche centrale est vide.");
+display_error("La pioche centrale est vide.");
 return EMPTY_CARD;
 }
 
@@ -171,12 +171,12 @@ return card;
 
 int drawFromPersonalDiscard(GameState *game, int discardIndex) {
 if (discardIndex < 0 || discardIndex >= game->numPlayers) {
-afficher_erreur("Index de défausse invalide.");
+display_error("Index de défausse invalide.");
 return EMPTY_CARD;
 }
 
 if (game->personalDiscards[discardIndex] == EMPTY_CARD) {
-afficher_erreur("Cette défausse est vide.");
+display_error("Cette défausse est vide.");
 return EMPTY_CARD;
 }
 
@@ -189,7 +189,7 @@ int exchangePlayerCard(GameState *game, int playerCardIndex, int newCard) {
 int playerIndex = game->currentPlayerIndex;
 
 if (playerCardIndex < 0 || playerCardIndex >= game->cardsPerPlayer) {
-afficher_erreur("Index de carte invalide.");
+display_error("Index de carte invalide.");
 return EMPTY_CARD;
 }
 
@@ -202,7 +202,7 @@ game->visibleCards[playerIndex]++;
 
 // Vérifier si toutes les cartes sont visibles
 if (game->visibleCards[playerIndex] == game->cardsPerPlayer && !game->lastRound) {
-    afficher_info("Toutes vos cartes sont visibles! C'est le dernier tour.");
+    display_message("Toutes vos cartes sont visibles! C'est le dernier tour.");
     game->lastRound = true;
     game->winnerIndex = playerIndex;
 }
@@ -213,7 +213,7 @@ return oldCard;
 
 void placeInPersonalDiscard(GameState *game, int playerIndex, int card) {
 if (playerIndex < 0 || playerIndex >= game->numPlayers) {
-afficher_erreur("Index de joueur invalide.");
+display_error("Index de joueur invalide.");
 return;
 }
 
@@ -239,13 +239,13 @@ if (game->playerCards[i][j] == EMPTY_CARD) {
         scores[i] += penaltyCard;
         char buffer[100];
         sprintf(buffer, "Pénalité pour joueur %d: +%d points", i+1, penaltyCard);
-        afficher_info(buffer);
+        display_message(buffer);
     } else {
         // Si la pioche est vide, ajouter une pénalité fixe
         scores[i] += 10;
         char buffer[100];
         sprintf(buffer, "Pénalité pour joueur %d: +10 points (pioche vide)", i+1);
-        afficher_info(buffer);
+        display_message(buffer);
     }
 }
 }
@@ -259,8 +259,8 @@ int sortedIndices[MAX_PLAYERS];
 calculateScores(game, scores);
 sortPlayersByScore(game, sortedIndices, scores);
 
-nettoyer_ecran();
-afficher_resultats(game, sortedIndices, scores);
+clear_screen();
+display_game_results(game, sortedIndices, scores);
 }
 
 int displayMainMenu() {
@@ -278,7 +278,7 @@ return readInt(1, 4, "Choisissez une option: ", "Option invalide. Choisissez ent
 }
 
 bool displayGameSetupMenu(GameState *game) {
-nettoyer_ecran();
+clear_screen();
 printf("╔═════════════════════════════════╗\n");
 printf("║     CONFIGURATION DU JEU        ║\n");
 printf("╚═════════════════════════════════╝\n\n");
