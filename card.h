@@ -6,7 +6,7 @@
 // Maximum de cartes dans le jeu
 #define MAX_CARDS 150
 
-bool proposer_de_changer_les_valeurs();
+bool suggest_value_swap();
 void initializeDefaultCardDeck(int cards[], int *size);
 bool changeCardValuesToFile(const char *filename);
 bool initializeCardDeckFromFile(int cards[], int *size, const char *filename);
