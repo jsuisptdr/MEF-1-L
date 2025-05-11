@@ -1,0 +1,79 @@
+CARD_YARD          Groupe MEF-1-L 
+
+Les concepteurs de ce jeu sont Aya Takharboucht, Tenzin Nachugong et Grégoire Chaumont. Nous nous sommes mis en groupe ensemble car nous nous 
+connaissons depuis quelques temps et nous avons donc une assez bonne cohésion ainsi qu’une bonne connaissance des capacités de chacun.
+
+Objectif du projet :
+
+Nous avons dû réaliser un jeu de cartes multijoueur , qui puisse s’afficher sur le 
+terminal. Dans ce jeu chaque joueur cherche à obtenir le score le plus bas en fin 
+de partie en échangeant ses cartes plus ou moins stratégiquement. 
+Les règles du jeu sont les suivantes :
+Au début du jeu chaque joueur a des cartes personnelles placées face 
+cachée devant lui. Leur nombre est déterminé de manière aléatoire pour 
+notre part ( c’est notre variante ). Quant aux valeurs des cartes elles sont 
+stockées dans un fichier VALUE_CARD.txt ( notre variante aussi )
+
+Le terminal comprend également une pioche centrale ( face cachée ) et une défausse par joueur ( face visible ) pour permettre aux joueurs de piocher et 
+de défausser leurs cartes tout au long du jeu.
+À chaque tour, un joueur effectue dans cet ordre :
+Piocher une carte dans la pioche centrale ou dans une défausse ( à condition qu’elle contienne déjà des cartes )
+Echanger cette carte avec une des siennes au choix ( face visible ou face cachée )
+Placer la carte échangée sur sa propre défausse
+Dès qu’un joueur a échanger ses deux cartes, la nouvelle carte doit être retournée de manière à ce qu’elle soit face visible
+La partie prend fin quand un joueur rend toutes ses cartes visibles. Les autres joueurs font encore un tour.
+Le score final est la somme des valeurs visibles. Le plus petit score remporte le jeu.
+
+Composition du jeu :
+
+Le jeu ne contient que des cartes, avec :
+Des valeurs de cartes de -10 à +10
+Où il y’a 3 cartes de chaque valeur
+Ces données sont enregistrées dans notre fichier VALUE_CARD.txt
+
+
+Organisation du travail : 
+
+Nous avons répartis les fichiers entre nous trois pour gagner du temps et 
+faire travailler l’ensemble du groupe. Aya a fait les fonctions main, game, 
+card (.c et .h) Tenzin a fait les fonctions player, display (.c et .h) et le Readme 
+et Grégoire a fait les fonctions utils, save (.c et .h) et le makefile.
+
+Nous avons fait des sessions à la BU et à CY-Tech le soir pour pouvoir 
+avancer sur notre code 
+
+Problèmes rencontrés :
+
+Nous avons rencontré pas mal de problèmes tout au long de notre projet 
+notamment des problèmes d’affichage. 
+
+En effet les cartes ne s’affichaient pas en face des piles de défausse de chaque 
+joueur nous avons donc du changer les fonctions display_player_card_horizontal, 
+display_discard et la fonction display_game dans laquelle nous avons rajouté ces 
+fonctions ainsi que 2 nouvelles fonctions : display_separator et 
+display_player_header. Les cartes de chaque joueurs s’affichent donc maintenant 
+les unes en dessous des autres avec des entêtes et des séparateurs pour les 
+séparer et afficher quel joueur a quelles cartes.
+
+La fonction display_player_turn (display.c) était également mal codée car elle 
+affichait 4 solutions avec des choix numérotés de 1 à 4 ce qui menait à une 
+incompréhension car on avait affiché deux propositions a la suite : 1.jouer et
+ 2.sauvegarder et quitter (fichier game.c) car en faisant 2 on sauvegardait 
+automatiquement et on quittait le jeu au lieu de piocher une carte dans une 
+défausse personnelle. Maintenant il suffit de faire 1 pour jouer puis sélectionner 
+l’action que l’on souhaite effectuer pour effectuer son tour.
+
+Lors de la distribution des cartes les cartes sont toutes initialisées comme étant 
+« EMPTY_CARDS »  (fonction shuffleDeck fichier game.c) car sinon on a des 
+cartes déjà retournées dans les jeux de chaque joueur elle ne sont donc pas face 
+cachée. Pour plus de simplicité sur l’affichage on a gardé ce système même s’il 
+n’est pas parfait. Pour compenser cela, à la fin de la partie les joueurs prenne les 
+cartes de la pioche pour chaque cartes pas encore échangées (EMPTY_CARDS) et 
+reçoit une pénalité en plus pour « rééquilibrer » le jeu.
+
+Nous avons également codé le jeu premièrement avec toutes les variantes pour le 
+tester mais ensuite la suppression des autres variantes pour ne garder que les 
+autres était délicate donc nous les avons laissé en espérant garder un bon 
+gameplay (intializeGame -> fichier game.c,   et initializedefaultCardDeck, 
+initializeCardFromUserImput -> fichier card.c). Néanmoins nous pouvons jouer 
+sans problème avec nos variantes comme demandé.
