@@ -16,182 +16,182 @@ const char* COULEURS_JOUEURS[] = {
 
 };
 
-const char* obtenir_couleur(int valeur) {
-    if (valeur == EMPTY_CARD) return BLANC; // Cartes non retournées en blanc
-    else if (valeur == -20) return NOIR; 
-    else if (valeur == -19) return B_NOIR;
-    else if (valeur == -18) return ROUGE;
-    else if (valeur == -17) return B_ROUGE;
-    else if (valeur == -16) return VERT;
-    else if (valeur == -15) return B_VERT;
-    else if (valeur == -14) return JAUNE;
-    else if (valeur == -13) return B_JAUNE;
-    else if (valeur == -12) return BLEU;
-    else if (valeur == -11) return B_BLEU;
-    else if (valeur == -10) return MAGENTA;
-    else if (valeur == -9) return B_MAGENTA;
-    else if (valeur == -8) return CYAN;
-    else if (valeur == -7) return B_CYAN;
-    else if (valeur == -6) return BLANC;
-    else if (valeur == -5) return ROUGE;
-    else if (valeur == -4) return B_ROUGE;
-    else if (valeur == -3) return VERT;
-    else if (valeur == -2) return B_VERT;
-    else if (valeur == -1) return JAUNE;
-    else if (valeur == 0) return B_JAUNE;
-    else if (valeur == 1) return BLEU;
-    else if (valeur == 2) return B_BLEU;
-    else if (valeur == 3) return MAGENTA;
-    else if (valeur == 4) return B_MAGENTA;
-    else if (valeur == 5) return CYAN;
-    else if (valeur == 6) return B_CYAN;
-    else if (valeur == 7) return ROUGE;
-    else if (valeur == 8) return B_ROUGE;
-    else if (valeur == 9) return VERT;
-    else if (valeur == 10) return B_VERT;
-    else if (valeur == 11) return BLEU;
-    else if (valeur == 12) return B_BLEU;
-    else if (valeur == 13) return MAGENTA;
-    else if (valeur == 14) return B_MAGENTA;
-    else if (valeur == 15) return CYAN;
-    else if (valeur == 16) return B_CYAN;
-    else if (valeur == 17) return ROUGE;
-    else if (valeur == 18) return B_ROUGE;
-    else if (valeur == 19) return VERT;
-    else if (valeur == 20) return B_VERT;
+const char* get_color(int colorValue) {
+    if (colorValue == EMPTY_CARD) return BLANC; // Cartes non retournées en blanc
+    else if (colorValue == -20) return NOIR; 
+    else if (colorValue == -19) return B_NOIR;
+    else if (colorValue == -18) return ROUGE;
+    else if (colorValue == -17) return B_ROUGE;
+    else if (colorValue == -16) return VERT;
+    else if (colorValue == -15) return B_VERT;
+    else if (colorValue == -14) return JAUNE;
+    else if (colorValue == -13) return B_JAUNE;
+    else if (colorValue == -12) return BLEU;
+    else if (colorValue == -11) return B_BLEU;
+    else if (colorValue == -10) return MAGENTA;
+    else if (colorValue == -9) return B_MAGENTA;
+    else if (colorValue == -8) return CYAN;
+    else if (colorValue == -7) return B_CYAN;
+    else if (colorValue == -6) return BLANC;
+    else if (colorValue == -5) return ROUGE;
+    else if (colorValue == -4) return B_ROUGE;
+    else if (colorValue == -3) return VERT;
+    else if (colorValue == -2) return B_VERT;
+    else if (colorValue == -1) return JAUNE;
+    else if (colorValue == 0) return B_JAUNE;
+    else if (colorValue == 1) return BLEU;
+    else if (colorValue == 2) return B_BLEU;
+    else if (colorValue == 3) return MAGENTA;
+    else if (colorValue == 4) return B_MAGENTA;
+    else if (colorValue == 5) return CYAN;
+    else if (colorValue == 6) return B_CYAN;
+    else if (colorValue == 7) return ROUGE;
+    else if (colorValue == 8) return B_ROUGE;
+    else if (colorValue == 9) return VERT;
+    else if (colorValue == 10) return B_VERT;
+    else if (colorValue == 11) return BLEU;
+    else if (colorValue == 12) return B_BLEU;
+    else if (colorValue == 13) return MAGENTA;
+    else if (colorValue == 14) return B_MAGENTA;
+    else if (colorValue == 15) return CYAN;
+    else if (colorValue == 16) return B_CYAN;
+    else if (colorValue == 17) return ROUGE;
+    else if (colorValue == 18) return B_ROUGE;
+    else if (colorValue == 19) return VERT;
+    else if (colorValue == 20) return B_VERT;
     else return BLANC; // Valeur par défaut
 }
 
-// Obtenir la chaîne formatée pour une valeur
-const char* obtenir_valeur_formatee(int valeur) {
-    if (valeur == EMPTY_CARD) {
+// Obtenir la chaîne formatée pour une colorValue
+const char* get_formatted_value(int colorValue) {
+    if (colorValue == EMPTY_CARD) {
         return "~~~~~~";
-    } else if (valeur <= -10) {
+    } else if (colorValue <= -10) {
         // Pour les nombres négatifs à deux chiffres
-        if (valeur == -10) return " -10  ";
-        if (valeur == -11) return " -11  ";
-        if (valeur == -12) return " -12  ";
-        if (valeur == -13) return " -13  ";
-        if (valeur == -14) return " -14  ";
-        if (valeur == -15) return " -15  ";
-        if (valeur == -16) return " -16  ";
-        if (valeur == -17) return " -17  ";
-        if (valeur == -18) return " -18  ";
-        if (valeur == -19) return " -19  ";
-        if (valeur == -20) return " -20  ";
+        if (colorValue == -10) return " -10  ";
+        if (colorValue == -11) return " -11  ";
+        if (colorValue == -12) return " -12  ";
+        if (colorValue == -13) return " -13  ";
+        if (colorValue == -14) return " -14  ";
+        if (colorValue == -15) return " -15  ";
+        if (colorValue == -16) return " -16  ";
+        if (colorValue == -17) return " -17  ";
+        if (colorValue == -18) return " -18  ";
+        if (colorValue == -19) return " -19  ";
+        if (colorValue == -20) return " -20  ";
         return " -??  "; // Valeur par défaut pour d'autres cas
-    } else if (valeur < 0) {
+    } else if (colorValue < 0) {
         // Pour les nombres négatifs à un chiffre
-        if (valeur == -1) return "  -1  ";
-        if (valeur == -2) return "  -2  ";
-        if (valeur == -3) return "  -3  ";
-        if (valeur == -4) return "  -4  ";
-        if (valeur == -5) return "  -5  ";
-        if (valeur == -6) return "  -6  ";
-        if (valeur == -7) return "  -7  ";
-        if (valeur == -8) return "  -8  ";
-        if (valeur == -9) return "  -9  ";
+        if (colorValue == -1) return "  -1  ";
+        if (colorValue == -2) return "  -2  ";
+        if (colorValue == -3) return "  -3  ";
+        if (colorValue == -4) return "  -4  ";
+        if (colorValue == -5) return "  -5  ";
+        if (colorValue == -6) return "  -6  ";
+        if (colorValue == -7) return "  -7  ";
+        if (colorValue == -8) return "  -8  ";
+        if (colorValue == -9) return "  -9  ";
         return "  -?   "; // Ne devrait jamais arriver ici
-    } else if (valeur >= 10) {
+    } else if (colorValue >= 10) {
         // Pour les nombres positifs à deux chiffres
-        if (valeur == 10) return "  10  ";
-        if (valeur == 11) return "  11  ";
-        if (valeur == 12) return "  12  ";
-        if (valeur == 13) return "  13  ";
-        if (valeur == 14) return "  14  ";
-        if (valeur == 15) return "  15  ";
-        if (valeur == 16) return "  16  ";
-        if (valeur == 17) return "  17  ";
-        if (valeur == 18) return "  18  ";
-        if (valeur == 19) return "  19  ";
-        if (valeur == 20) return "  20  ";
+        if (colorValue == 10) return "  10  ";
+        if (colorValue == 11) return "  11  ";
+        if (colorValue == 12) return "  12  ";
+        if (colorValue == 13) return "  13  ";
+        if (colorValue == 14) return "  14  ";
+        if (colorValue == 15) return "  15  ";
+        if (colorValue == 16) return "  16  ";
+        if (colorValue == 17) return "  17  ";
+        if (colorValue == 18) return "  18  ";
+        if (colorValue == 19) return "  19  ";
+        if (colorValue == 20) return "  20  ";
         return "  ??  "; // Valeur par défaut pour d'autres cas
     } else {
         // Pour les nombres positifs à un chiffre
-        if (valeur == 0) return "   0  ";
-        if (valeur == 1) return "   1  ";
-        if (valeur == 2) return "   2  ";
-        if (valeur == 3) return "   3  ";
-        if (valeur == 4) return "   4  ";
-        if (valeur == 5) return "   5  ";
-        if (valeur == 6) return "   6  ";
-        if (valeur == 7) return "   7  ";
-        if (valeur == 8) return "   8  ";
-        if (valeur == 9) return "   9  ";
+        if (colorValue == 0) return "   0  ";
+        if (colorValue == 1) return "   1  ";
+        if (colorValue == 2) return "   2  ";
+        if (colorValue == 3) return "   3  ";
+        if (colorValue == 4) return "   4  ";
+        if (colorValue == 5) return "   5  ";
+        if (colorValue == 6) return "   6  ";
+        if (colorValue == 7) return "   7  ";
+        if (colorValue == 8) return "   8  ";
+        if (colorValue == 9) return "   9  ";
         return "   ?   "; // Ne devrait jamais arriver ici
     }
 }
 
 // Affiche les cartes d'un joueur en horizontal, mais ligne par ligne
-void afficher_cartes_joueur_horizontal(int cartes[], int debut, int fin, const char* couleur_joueur) {
+void display_player_cards_horizontal(int playerCards[], int startIndex, int endIndex, const char* player_color) {
     // Première ligne (bordure supérieure) pour toutes les cartes
-    for (int i = debut; i <= fin; i++) {
-        const char* couleur = obtenir_couleur(cartes[i]);
-        printf("%s┌──────┐%s ", couleur, RESET);
+    for (int i = startIndex; i <= endIndex; i++) {
+        const char* cardColor = get_color(playerCards[i]);
+        printf("%s┌──────┐%s ", cardColor, RESET);
     }
     printf("\n");
     
     // Deuxième ligne (CARD) pour toutes les cartes
-    for (int i = debut; i <= fin; i++) {
-        const char* couleur = obtenir_couleur(cartes[i]);
-        printf("%s│ CARD │%s ", couleur, RESET);
+    for (int i = startIndex; i <= endIndex; i++) {
+        const char* cardColor = get_color(playerCards[i]);
+        printf("%s│ CARD │%s ", cardColor, RESET);
     }
     printf("\n");
     
-    // Troisième ligne (valeur) pour toutes les cartes
-    for (int i = debut; i <= fin; i++) {
-        const char* couleur = obtenir_couleur(cartes[i]);
-        const char* valeur = obtenir_valeur_formatee(cartes[i]);
-        printf("%s│%s│%s ", couleur, valeur, RESET);
+    // Troisième ligne (colorValue) pour toutes les cartes
+    for (int i = startIndex; i <= endIndex; i++) {
+        const char* cardColor = get_color(playerCards[i]);
+        const char* colorValue = get_formatted_value(playerCards[i]);
+        printf("%s│%s│%s ", cardColor, colorValue, RESET);
     }
     printf("\n");
     
     // Quatrième ligne (YARD) pour toutes les cartes
-    for (int i = debut; i <= fin; i++) {
-        const char* couleur = obtenir_couleur(cartes[i]);
-        printf("%s│ YARD │%s ", couleur, RESET);
+    for (int i = startIndex; i <= endIndex; i++) {
+        const char* cardColor = get_color(playerCards[i]);
+        printf("%s│ YARD │%s ", cardColor, RESET);
     }
     printf("\n");
     
     // Cinquième ligne (bordure inférieure) pour toutes les cartes
-    for (int i = debut; i <= fin; i++) {
-        const char* couleur = obtenir_couleur(cartes[i]);
-        printf("%s└──────┘%s ", couleur, RESET);
+    for (int i = startIndex; i <= endIndex; i++) {
+        const char* cardColor = get_color(playerCards[i]);
+        printf("%s└──────┘%s ", cardColor, RESET);
     }
     printf("\n");
 }
 
 // Affiche une seule défausse
-void afficher_defausse(int valeur, const char* couleur_joueur) {
-    const char* couleur = obtenir_couleur(valeur);
-    const char* valeur_formatee = obtenir_valeur_formatee(valeur);
+void display_discard(int colorValue, const char* player_color) {
+    const char* cardColor = get_color(colorValue);
+    const char* valeur_formatee = get_formatted_value(colorValue);
     
-    printf("%s┌──────┐%s\n", couleur, RESET);
-    printf("%s│%sDEFAU.%s│%s\n", couleur, couleur_joueur, couleur, RESET);
-    printf("%s│%s│%s\n", couleur, valeur_formatee, RESET);
-    printf("%s│      │%s\n", couleur, RESET);
-    printf("%s└──────┘%s\n", couleur, RESET);
+    printf("%s┌──────┐%s\n", cardColor, RESET);
+    printf("%s│%sDEFAU.%s│%s\n", cardColor, player_color, cardColor, RESET);
+    printf("%s│%s│%s\n", cardColor, valeur_formatee, RESET);
+    printf("%s│      │%s\n", cardColor, RESET);
+    printf("%s└──────┘%s\n", cardColor, RESET);
 }
 
 // Affiche la pioche centrale
-void afficher_pioche(int currentCard) {
-    const char* couleur = obtenir_couleur(currentCard);
-    const char* valeur = obtenir_valeur_formatee(currentCard);
+void display_draw_pile(int currentCard) {
+    const char* cardColor = get_color(currentCard);
+    const char* colorValue = get_formatted_value(currentCard);
     
     printf("\n");
     printf("╔════════════════════════╗\n");
     printf("║    PIOCHE CENTRALE     ║\n");
     printf("╚════════════════════════╝\n\n");
     
-    printf("        %s┌──────┐%s\n", couleur, RESET);
-    printf("        %s│ CARD │%s\n", couleur, RESET);
-    printf("        %s│%s│%s\n", couleur, valeur, RESET);
-    printf("        %s│ YARD │%s\n", couleur, RESET);
-    printf("        %s└──────┘%s\n\n", couleur, RESET);
+    printf("        %s┌──────┐%s\n", cardColor, RESET);
+    printf("        %s│ CARD │%s\n", cardColor, RESET);
+    printf("        %s│%s│%s\n", cardColor, colorValue, RESET);
+    printf("        %s│ YARD │%s\n", cardColor, RESET);
+    printf("        %s└──────┘%s\n\n", cardColor, RESET);
 }
 
 // Affiche un séparateur de section
-void afficher_separateur(const char* titre) {
+void display_section_divider(const char* titre) {
     printf("\n");
     printf("╔════════════════════════════════════════════════════════════╗\n");
     printf("║ %-56s   ║\n", titre);
@@ -199,54 +199,54 @@ void afficher_separateur(const char* titre) {
 }
 
 // Affiche l'entête pour un joueur
-void afficher_entete_joueur(int index, const char* nom, const char* couleur_joueur) {
+void display_player_header(int index, const char* nom, const char* player_color) {
     printf("\n");
-    printf("%s╔═══════════════════════════════════════════════╗%s\n", couleur_joueur, RESET);
-    printf("%s║ JOUEUR %d : %-34s ║%s\n", couleur_joueur, index + 1, nom, RESET);
-    printf("%s╚═══════════════════════════════════════════════╝%s\n\n", couleur_joueur, RESET);
+    printf("%s╔═══════════════════════════════════════════════╗%s\n", player_color, RESET);
+    printf("%s║ JOUEUR %d : %-34s ║%s\n", player_color, index + 1, nom, RESET);
+    printf("%s╚═══════════════════════════════════════════════╝%s\n\n", player_color, RESET);
 }
 
 // Fonction principale pour afficher l'état du jeu
-void afficher_jeu(GameState *game) {
+void display_game(GameState *game) {
     // Vérification que le nombre de joueurs est valide
     if (game->numPlayers < MIN_PLAYERS || game->numPlayers > MAX_PLAYERS) {
         printf("Erreur: Le nombre de joueurs doit être entre %d et %d.\n", MIN_PLAYERS, MAX_PLAYERS);
         return;
     }
     
-    nettoyer_ecran();
+    clear_screen();
     
     // Afficher la pioche centrale
-    afficher_pioche(game->currentCentralCard);
+    display_draw_pile(game->currentCentralCard);
     
     // Afficher toutes les défausses
-    afficher_separateur("DÉFAUSSES DES JOUEURS");
+    display_section_divider("DÉFAUSSES DES JOUEURS");
     
     for (int i = 0; i < game->numPlayers; i++) {
         printf("%s%s (J%d)%s\n", COULEURS_JOUEURS[i], game->playerNames[i], i + 1, RESET);
-        afficher_defausse(game->personalDiscards[i], COULEURS_JOUEURS[i]);
+        display_discard(game->personalDiscards[i], COULEURS_JOUEURS[i]);
         printf("\n");
     }
     
     // Ensuite, afficher chaque joueur individuellement avec ses cartes
-    afficher_separateur("CARTES DES JOUEURS");
+    display_section_divider("CARTES DES JOUEURS");
     
     for (int i = 0; i < game->numPlayers; i++) {
-        // Afficher l'entête du joueur avec sa couleur
-        afficher_entete_joueur(i, game->playerNames[i], COULEURS_JOUEURS[i]);
+        // Afficher l'entête du joueur avec sa cardColor
+        display_player_header(i, game->playerNames[i], COULEURS_JOUEURS[i]);
         
         // Afficher les cartes du joueur
         int milieu = game->cardsPerPlayer / 2;
         if (game->cardsPerPlayer > 6) {
             // Première moitié des cartes
-            afficher_cartes_joueur_horizontal(game->playerCards[i], 0, milieu - 1, COULEURS_JOUEURS[i]);
+            display_player_cards_horizontal(game->playerCards[i], 0, milieu - 1, COULEURS_JOUEURS[i]);
             printf("\n");
             
             // Seconde moitié des cartes
-            afficher_cartes_joueur_horizontal(game->playerCards[i], milieu, game->cardsPerPlayer - 1, COULEURS_JOUEURS[i]);
+            display_player_cards_horizontal(game->playerCards[i], milieu, game->cardsPerPlayer - 1, COULEURS_JOUEURS[i]);
         } else {
             // Toutes les cartes sur une seule rangée
-            afficher_cartes_joueur_horizontal(game->playerCards[i], 0, game->cardsPerPlayer - 1, COULEURS_JOUEURS[i]);
+            display_player_cards_horizontal(game->playerCards[i], 0, game->cardsPerPlayer - 1, COULEURS_JOUEURS[i]);
         }
     }
     
@@ -260,7 +260,7 @@ void afficher_jeu(GameState *game) {
            COULEURS_JOUEURS[game->currentPlayerIndex], RESET);
 }
 
-void afficher_bienvenue() {
+void display_welcome_message() {
     printf("\n\n");
     printf("  ██████╗ █████╗ ██████╗ ██████╗     ██╗   ██╗ █████╗ ██████╗ ██████╗ \n");
     printf(" ██╔════╝██╔══██╗██╔══██╗██╔══██╗    ╚██╗ ██╔╝██╔══██╗██╔══██╗██╔══██╗\n");
@@ -274,8 +274,8 @@ void afficher_bienvenue() {
     pauseWithMessage("Appuyez sur Entrée pour continuer...");
 }
 
-void afficher_instructions() {
-    nettoyer_ecran();
+void display_instructions() {
+    clear_screen();
     printf("╔════════════════════════════════════════════════════════════╗\n");
     printf("║                     INSTRUCTIONS                           ║\n");
     printf("╚════════════════════════════════════════════════════════════╝\n\n");
@@ -310,23 +310,23 @@ void afficher_instructions() {
     pauseWithMessage("Appuyez sur Entrée pour revenir au menu principal...");
 }
 
-void afficher_erreur(const char *message) {
+void display_error(const char *message) {
     printf("%sErreur: %s%s\n", ROUGE, message, RESET);
 }
 
-void afficher_info(const char *message) {
+void display_message(const char *message) {
     printf("%sInfo: %s%s\n", BLEU, message, RESET);
 }
 
-void nettoyer_ecran() {
+void clear_screen() {
     system("clear || cls"); // Clear screen for Unix/Linux or Windows
 }
 
-void afficher_tour_joueur(GameState *game) {
+void display_player_turn(GameState *game) {
     int index = game->currentPlayerIndex;
-    const char* couleur = COULEURS_JOUEURS[index];
+    const char* cardColor = COULEURS_JOUEURS[index];
     
-    printf("%sC'est le tour de %s!%s\n\n", couleur, game->playerNames[index], RESET);
+    printf("%sC'est le tour de %s!%s\n\n", cardColor, game->playerNames[index], RESET);
     printf("Sélectionnez une action:\n");
     printf("- Piocher une carte de la pioche centrale\n");
     printf("- Prendre une carte d'une défausse personnelle\n");
@@ -334,7 +334,7 @@ void afficher_tour_joueur(GameState *game) {
     printf("- Terminer le tour\n");
 }
 
-void afficher_resultats(GameState *game, int sortedIndices[], int scores[]) {
+void display_game_results(GameState *game, int sortedIndices[], int scores[]) {
     printf("╔══════════════════════════════════════════════╗\n");
     printf("║                RÉSULTATS                     ║\n");
     printf("╚══════════════════════════════════════════════╝\n\n");
