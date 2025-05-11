@@ -25,7 +25,7 @@ void initializeDefaultCardDeck(int cards[], int *size) {
     }
 }
 
-bool proposer_de_changer_les_valeurs() {
+bool suggest_value_swap() {
     printf("Voulez-vous changer les valeurs des cartes ? (O/N)\n");
     char response[3];
     readString(response, sizeof(response), "Réponse: ");
@@ -39,7 +39,7 @@ bool proposer_de_changer_les_valeurs() {
 bool changeCardValuesToFile(const char *filename) {
     FILE *file = fopen(filename, "w");
     if (file == NULL) {
-        afficher_erreur("Impossible d'ouvrir le fichier pour sauvegarder les valeurs des cartes.");
+        display_error("Impossible d'ouvrir le fichier pour sauvegarder les valeurs des cartes.");
         return false;
     }
 
@@ -67,7 +67,7 @@ bool changeCardValuesToFile(const char *filename) {
     fclose(file);
 
     if (totalCards < 20) {
-        afficher_erreur("Pas assez de cartes. Il faut au moins 20 cartes pour jouer.");
+        display_error("Pas assez de cartes. Il faut au moins 20 cartes pour jouer.");
         return false;
     }
 
@@ -85,7 +85,7 @@ bool initializeCardDeckFromFile(int cards[], int *size, const char *filename) {
     // Ouvrir le fichier en mode lecture
     FILE *file = fopen(fullPath, "r");
     if (file == NULL) {
-        afficher_erreur("Impossible d'ouvrir le fichier pour charger les valeurs des cartes.");
+        display_error("Impossible d'ouvrir le fichier pour charger les valeurs des cartes.");
         return false;
     }
 
@@ -96,7 +96,7 @@ bool initializeCardDeckFromFile(int cards[], int *size, const char *filename) {
     while (fscanf(file, "%d %d", &value, &count) == 2) {
         // Vérifier que la valeur est valide
         if (value < -50 || value > 99) {
-            afficher_erreur("Valeur de carte invalide dans le fichier.");
+            display_error("Valeur de carte invalide dans le fichier.");
             fclose(file);
             return false;
         }
@@ -104,7 +104,7 @@ bool initializeCardDeckFromFile(int cards[], int *size, const char *filename) {
         // Ajouter les cartes au deck
         for (int i = 0; i < count; i++) {
             if (index >= MAX_CARDS) {
-                afficher_erreur("Trop de cartes dans le fichier. Impossible de toutes les stocker.");
+                display_error("Trop de cartes dans le fichier. Impossible de toutes les stocker.");
                 fclose(file);
                 return false;
             }
@@ -117,7 +117,7 @@ bool initializeCardDeckFromFile(int cards[], int *size, const char *filename) {
 
     // Vérifier qu'on a assez de cartes
     if (index < 20) {
-        afficher_erreur("Pas assez de cartes dans le fichier. Il faut au moins 20 cartes pour jouer.");
+        display_error("Pas assez de cartes dans le fichier. Il faut au moins 20 cartes pour jouer.");
         return false;
     }
 
@@ -144,7 +144,7 @@ bool initializeCardDeckFromUserInput(int cards[], int *size) {
 
         for (int i = 0; i < count; i++) {
             if (index >= MAX_CARDS) {
-                afficher_erreur("Trop de cartes. Impossible de toutes les stocker.");
+                display_error("Trop de cartes. Impossible de toutes les stocker.");
                 return false;
             }
             cards[index++] = value;
@@ -152,7 +152,7 @@ bool initializeCardDeckFromUserInput(int cards[], int *size) {
     }
 
     if (index < 20) {
-        afficher_erreur("Pas assez de cartes. Il faut au moins 20 cartes pour jouer.");
+        display_error("Pas assez de cartes. Il faut au moins 20 cartes pour jouer.");
         return false;
     }
 
