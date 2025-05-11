@@ -37,7 +37,7 @@ bool saveGame(GameState *game, const char *filename) {
     // Ouvrir le fichier en mode binaire écriture
     FILE *file = fopen(fullPath, "wb");
     if (file == NULL) {
-        afficher_erreur("Impossible d'ouvrir le fichier de sauvegarde.");
+        display_error("Impossible d'ouvrir le fichier de sauvegarde.");
         return false;
     }
     
@@ -85,7 +85,7 @@ bool loadGame(GameState *game, const char *filename) {
     // Ouvrir le fichier en mode binaire lecture
     FILE *file = fopen(fullPath, "rb");
     if (file == NULL) {
-        afficher_erreur("Impossible d'ouvrir le fichier de sauvegarde.");
+        display_error("Impossible d'ouvrir le fichier de sauvegarde.");
         return false;
     }
     
@@ -145,17 +145,17 @@ char* listSavedGames() {
         }
         closedir(dir);
     } else {
-        afficher_erreur("Impossible d'ouvrir le répertoire de sauvegarde.");
+        display_error("Impossible d'ouvrir le répertoire de sauvegarde.");
         return NULL;
     }
     
     if (count == 0) {
-        afficher_info("Aucune sauvegarde trouvée.");
+        display_message("Aucune sauvegarde trouvée.");
         return NULL;
     }
     
     // Afficher la liste des sauvegardes
-    nettoyer_ecran();
+    clear_screen();
     printf("\n\n");
     printf(B_JAUNE "===============================================\n" RESET);
     printf(B_JAUNE "=          SAUVEGARDES DISPONIBLES           =\n" RESET);
