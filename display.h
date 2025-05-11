@@ -28,18 +28,18 @@
 #define B_CYAN      "\033[1;36m"
 #define B_BLANC     "\033[1;37m"
 
-const char* obtenir_couleur(int valeur);
-void afficher_ligne_cartes(int joueurs[][MAX_CARDS_PER_PLAYER], int debut, int fin, int indice_carte_debut, int indice_carte_fin);
-void afficher_defausses(int defausses[], int debut, int fin);
-void afficher_numeros_joueurs(int debut, int fin, GameState *game);
-void afficher_pioche(int currentCard);
-void afficher_jeu(GameState *game);
-void afficher_bienvenue();
-void afficher_instructions();
-void afficher_erreur(const char *message);
-void afficher_info(const char *message);
-void nettoyer_ecran();
-void afficher_tour_joueur(GameState *game);
-void afficher_resultats(GameState *game, int sortedIndices[], int scores[]);
+const char* get_color(int colorValue);
+void display_card_row(int joueurs[][MAX_CARDS_PER_PLAYER], int startIndex, int endIndex, int indice_carte_debut, int indice_carte_fin);
+void display_faults(int defausses[], int startIndex, int endIndex);
+void display_player_numbers(int startIndex, int endIndex, GameState *game);
+void display_draw_pile(int currentCard);
+void display_game(GameState *game);
+void display_welcome_message();
+void display_instructions();
+void display_error(const char *message);
+void display_message(const char *message);
+void clear_screen();
+void display_player_turn(GameState *game);
+void display_game_results(GameState *game, int sortedIndices[], int scores[]);
 
 #endif // DISPLAY_H
