@@ -17,7 +17,7 @@ bool initializePlayers(GameState *game) {
         snprintf(prompt, sizeof(prompt), "Nom du joueur %d: ", i + 1);
         
         if (readString(game->playerNames[i], 50, prompt) == NULL) {
-            afficher_erreur("Erreur lors de la lecture du nom du joueur.");
+            display_error("Erreur lors de la lecture du nom du joueur.");
             return false;
         }
         
@@ -44,7 +44,7 @@ bool playerTurn(GameState *game) {
         // Piocher d'une défausse
         drawnCard = drawFromPersonalDiscard(game, drawChoice);
         if (drawnCard == EMPTY_CARD) {
-            afficher_erreur("Cette défausse est vide. Piochage impossible.");
+            display_error("Cette défausse est vide. Piochage impossible.");
             pauseWithMessage("Appuyez sur Entrée pour réessayer...");
             return false;
         }
@@ -52,7 +52,7 @@ bool playerTurn(GameState *game) {
     
     // Afficher la carte piochée
     printf("Vous avez pioché la carte: ");
-    const char* color = obtenir_couleur(drawnCard);
+    const char* color = get_color(drawnCard);
     printf("%s%d%s\n", color, drawnCard, RESET);
     
     // Demander au joueur ce qu'il veut faire avec la carte
@@ -115,7 +115,7 @@ int askPlayerForCardExchange(GameState *game, int drawnCard) {
         if (game->playerCards[game->currentPlayerIndex][i] == EMPTY_CARD) {
             printf(" (face cachée)\n");
         } else {
-            const char* color = obtenir_couleur(game->playerCards[game->currentPlayerIndex][i]);
+            const char* color = get_color(game->playerCards[game->currentPlayerIndex][i]);
             printf(" (%s%d%s)\n", color, game->playerCards[game->currentPlayerIndex][i], RESET);
         }
     }
@@ -134,7 +134,7 @@ int askPlayerForDrawChoice(GameState *game) {
     for (int i = 0; i < game->numPlayers; i++) {
         if (game->personalDiscards[i] != EMPTY_CARD) {
             validDiscardCount++;
-            const char* color = obtenir_couleur(game->personalDiscards[i]);
+            const char* color = get_color(game->personalDiscards[i]);
             printf("%d. Défausse de %s (%s%d%s)\n", 
                 validDiscardCount, 
                 game->playerNames[i], 
